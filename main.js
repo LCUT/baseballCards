@@ -3,6 +3,7 @@ card.addEventListener( 'click', function() {
   card.classList.toggle('is-flipped');
 });
 
+
 class GameOFThrones {
     constructor(height, width) {
         this.height = height;
@@ -42,6 +43,6 @@ function populateDOM(single_character) {
     let gotCard = document.createElement('div')
     let gotScene = document.createElement('div')
     let gotFront = document.createElement('div')
-    
+
 }
 
