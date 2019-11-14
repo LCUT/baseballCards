@@ -2,8 +2,21 @@ body {
   font-family: trajan-pro-3, serif;
   font-weight: 400;
   font-style: normal;
-  background: darkgray;
+  background-image: url(./Images/snowyMountain.jpg);
+  background-repeat: repeat-y;
+  background-size: 100vw;
   color: black;
+  padding: 0px;
+  margin: auto;
+  max-width: 1300px;
+}
+
+.bodyMiddle {
+  width: 100%;
+  height: 100vh;
+  padding: 0px;
+  background: darkgray;
+  opacity: .8;
 }
 
 h1 {
@@ -15,7 +28,7 @@ h1 {
 
 .title {
   padding-top: 5%;
-  width: 90%;
+  width:90%;
   margin: auto;
 }
 
@@ -46,7 +59,7 @@ button {
 }
 
 .scene {
-  width: 200px;
+  width: 33%;
   height: 260px;
   border: 1px solid #CCC;
   margin: 40px 0;
