@@ -1,3 +1,17 @@
+var card = document.querySelector('.card');
+card.addEventListener( 'click', function() {
+  card.classList.toggle('is-flipped');
+});
+
+class gotCharacter {
+    constructor(id, name, stats) {
+        this.id = id;
+        this.name = name;
+        this.base_stat = stats
+    }
+}
+
+const newGotChar = new gotCharacter()
 
 async function getAPIData(url) {
     try {
@@ -12,12 +26,11 @@ async function getAPIData(url) {
 const theData = getAPIData('https://anapioficeandfire.com/api/characters/')
 .then(data => {
     for (const character of data.results) {
-        getAPIData()
+        getAPIData(got.url).then(gotData => {
+            populateDOM(gotData)
+        })
     }
- 
 })
-
-console.log(theData)
 
 let mainArea = document.querySelector('main')
 
@@ -54,3 +67,29 @@ function getGotNumber(charURL) {
     }
 }
 
+
+
+function fillCardFront(gotFront, data) {
+    gotFront.setAttribute('class', 'card__face card__face--front')
+    let name = document.createElement('P')
+    let pic = document.createElement('img')
+    pic.setAttribute('class', 'picDivs')
+    let gotNum = getGotNumber(data.id)
+    gotFront.appendChild(name)
+
+    pic.src = `../images/${gotNum}.png`
+
+    gotFront.appendChild(pic)
+    gotFront.appendChild(name)
+}
+
+function fillCardBack(gotBack, data) {
+    gotBack.setAttribute('class', 'card__face card__face--back')
+    let gotOrder = document.createElement('p')
+    let gotHP = document.createElement('h5')
+    gotOrder.textContent = `#${data.id} ${data.name[0].toUpperCase()}${data.name.slice(1)}`
+
+    gotBack.appendChild(gotOrder)
+    gotBack.appendChild(gotHP)
+
+}
