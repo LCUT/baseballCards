@@ -1,23 +1,3 @@
-var card = document.querySelector('.card');
-card.addEventListener( 'click', function() {
-  card.classList.toggle('is-flipped');
-});
-
-
-class GameOFThrones {
-    constructor(height, width) {
-        this.height = height;
-        this.width = width;
-    }
-    get area() {
-        return this.calcArea();
-    }
-    calcArea() {
-        return this.height * this.width;
-    }
-}
-
-const square = new Rectangle(10,10);
 
 async function getAPIData(url) {
     try {
@@ -29,20 +9,48 @@ async function getAPIData(url) {
     }
 }
 
-const theData = getAPIData('https://anapioficeandfire.com/api/characters/').then(data => {
-    for (const characters of data.results) {
-        getAPIData(characters.url).then(gotData => {
-            populateDOM(gotData)
-        })
+const theData = getAPIData('https://anapioficeandfire.com/api/characters/')
+.then(data => {
+    for (const character of data.results) {
+        getAPIData()
     }
+ 
 })
+
+console.log(theData)
 
 let mainArea = document.querySelector('main')
 
 function populateDOM(single_character) {
-    let gotCard = document.createElement('div')
-    let gotScene = document.createElement('div')
-    let gotFront = document.createElement('div')
+    gotArray.forEach(name => {
+        console.log(characters)
+        let gotCard = document.createElement('div')
+        let gotName = document.createElement('h3')
+        let photo = document.createElement('img')
+    
+        gotCard.setAttribute('class', 'charDivs')
+        pic.setAttribute('class', 'picDivs')
 
+        let gotNum = getGotNumber(got.url)
+
+        name.textContent = got.name
+
+        pic.src = `../images/${gotNum}.png`
+
+        gotDiv.appendChild(name)
+        gotDiv.appendChild(pic)
+
+        mainArea.appendChild(gotDiv)
+    })
+}
+
+function getGotNumber(charURL) {
+    let end = charURL.lastIndexOf('/')
+    let charID = charURL.substring(end - 2, end)
+    if (charID.indexOf('/') !== -1) {
+        return `00${charID.slice(1, 2)}`
+    } else {
+        return `0${charID}`
+    }
 }
 
