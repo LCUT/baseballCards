@@ -67,8 +67,6 @@ function getGotNumber(charURL) {
     }
 }
 
-
-
 function fillCardFront(gotFront, data) {
     gotFront.setAttribute('class', 'card__face card__face--front')
     let name = document.createElement('P')
